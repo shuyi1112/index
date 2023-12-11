@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>refresh refresh and refresh</title>
+
+<style>
+
+
+body {
+  background-image: url(/Users/mashuyi/Documents/github-demo/images/1.Png);
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-attachment: fixed; 
+  background-position: center bottom; 
+  font-family: 'Ginta', sans-serif;
+}
+
+
+.container {
+  position: relative;
+  width: 100vw; 
+  height: 80vh; 
+  overflow: hidden;
+  margin: 0 auto; 
+}
+
+  .image {
+    width:100%;
+    height:auto;
+    position: absolute;
+    transition: all 0.5s; 
+  }
+
+
+  #titleText, #content {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10px; 
+  text-align: center;
+  color: rgb(48, 91, 64);
+}
+
+
+#content{
+  font-size: 14px;
+  color: rgb(48, 91, 64);
+  position: absolute;
+  top:60px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+
+
+</style>
+</head>
+<body>
+
+  <h1 id="titleText">Welcome to virtual Chinese painting world！</h1>
+
+<div class="container" id="imageContainer">
+  
+  <img src="/Users/mashuyi/Documents/github-demo/img1.png" class="image">
+  <img src="/Users/mashuyi/Documents/github-demo/img2.png" class="image">
+  <img src="/Users/mashuyi/Documents/github-demo/img3.png" class="image">
+  <img src="/Users/mashuyi/Documents/github-demo/img5.png" class="image">
+  <img src="/Users/mashuyi/Documents/github-demo/img6.png" class="image">
+  <img src="/Users/mashuyi/Documents/github-demo/img7.png" class="image">
+  
+
+
+ 
+</div>
+
+<div class="image">
+  <div>
+    <img src="loading.gif" alt="decorate">
+  </div>
+</div>
+
+
+<script src="script.js"></script>
+
+
+
+<script>
+  function getRandomNumber(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  function refreshImages() {
+    document.querySelectorAll('.image').forEach(img => {
+      const container = document.getElementById('imageContainer');
+      const maxWidth = container.clientWidth - 100;
+      const maxHeight = container.clientHeight - 100; 
+
+      const randomWidth = getRandomNumber(50, maxWidth);
+      const randomHeight = getRandomNumber(50, maxHeight);
+      const randomX = getRandomNumber(0, maxWidth - randomWidth);
+      const randomY = getRandomNumber(0, maxHeight - randomHeight);
+
+      img.style.width = randomWidth + 'px';
+      img.style.height = 'auto'; // Maintain aspect ratio
+      img.style.top = randomY + 'px';
+      img.style.left = randomX + 'px';
+    });
+  }
+
+  refreshImages();
+
+//刷新更换背景图片
+
+document.addEventListener('DOMContentLoaded', function() {
+    // 图片数组
+    var images = [
+
+
+        '/Users/mashuyi/Documents/github-demo/images/3.png', // 图片3的路径
+        '/Users/mashuyi/Documents/github-demo/images/4.png', // 图片4的路径
+        '/Users/mashuyi/Documents/github-demo/images/5.png', // 图片5的路径
+        '/Users/mashuyi/Documents/github-demo/images/1.gif',
+        '/Users/mashuyi/Documents/github-demo/images/2.gif',
+    ];
+
+    // 随机选择一张图片
+    var chosenImage = images[Math.floor(Math.random() * images.length)];
+
+    // 设置背景图片
+    document.body.style.backgroundImage = 'url(' + chosenImage + ')';
+});
+
+  
+</script>
+
+</body>
+</html>
